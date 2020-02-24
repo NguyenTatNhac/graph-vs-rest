@@ -1,10 +1,10 @@
 const express = require('express');
-const debug = require('debug')('rest-vs-graphql:users');
 const router = express.Router();
+const debug = require('debug')('rest-vs-graphql:graphql');
 
 router.get('/', function (req, res, next) {
-  debug("Users endpoint!");
-  res.send('Users router response!');
+  debug('GraphQL print debugger!');
+  res.send('GraphQL response!!!');
 });
 
 module.exports = router;
