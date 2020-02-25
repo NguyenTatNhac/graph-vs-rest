@@ -1,23 +1,27 @@
 {
   "name": "rest-vs-graphql",
   "version": "0.0.1",
-  "author": "Nhac Tat Nguyen",
+  "description": "REST API vs GraphQL",
+  "author": "Ryker Tyler (Nhac Tat Nguyen)",
+  "license": "ISC",
   "private": true,
   "scripts": {
-    "start": "nodemon --exec babel-node ./bin/www"
+    "dev": "SET debug=rest-vs-graphql:* && nodemon --exec babel-node ./src/bin/www",
+    "start": "npm run build && node dist/bin/www",
+    "build": "rimraf dist && babel src --out-dir dist --copy-files"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
-    "http-errors": "~1.6.3",
-    "jade": "~1.11.0",
     "morgan": "~1.9.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.4",
     "@babel/node": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.2",
+    "rimraf": "^3.0.2"
   }
 }
