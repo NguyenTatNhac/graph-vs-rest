@@ -9,4 +9,4 @@ graphQlRouter.get('/', (req, res) => {
   res.send('GraphQL response!!!');
 });
 
-export {graphQlRouter};
+export default graphQlRouter;
