@@ -1,7 +1,10 @@
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
-import {defaultRouter, authorRouter, graphQlRouter} from './routes';
+import DefaultRouter from './routes/DefaultRouter';
+import AuthorRouter from './routes/AuthorRouter';
+import ArticleRouter from './routes/ArticleRouter';
+import GraphQlRouter from './routes/GraphqlRouter';
 
 const app = express();
 
@@ -11,8 +14,9 @@ app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 
 // config routers
-app.use('/', defaultRouter);
-app.use('/authors', authorRouter);
-app.use('/graphql', graphQlRouter);
+app.use('/', DefaultRouter);
+app.use('/authors', AuthorRouter);
+app.use('/articles', ArticleRouter);
+app.use('/graphql', GraphQlRouter);
 
 module.exports = app;

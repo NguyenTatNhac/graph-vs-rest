@@ -1,10 +1,10 @@
 export default (sequelize, DataTypes) => {
   const Author = sequelize.define('Author', {
-    first_name: {
+    firstName: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    last_name: {
+    lastName: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -15,8 +15,17 @@ export default (sequelize, DataTypes) => {
     birthday: DataTypes.DATE,
     bio: DataTypes.TEXT
   }, {});
-  Author.associate = function (models) {
-    // associations can be defined here
+  Author.associate = models => {
+    Author.hasMany(models.Article, {
+      foreignKey: "authorId",
+      as: "articles",
+      onDelete: "CASCADE"
+    });
+    Author.hasMany(models.Comment, {
+      foreignKey: "authorId",
+      as: "comments",
+      onDelete: "CASCADE"
+    });
   };
   return Author;
 };

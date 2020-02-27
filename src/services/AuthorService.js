@@ -37,7 +37,7 @@ class AuthorService {
       await database.Author.destroy({
         where: {id: Number(id)}
       });
-      return true;
+      return authorToDelete;
     }
     return null;
   }
