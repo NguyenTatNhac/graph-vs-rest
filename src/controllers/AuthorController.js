@@ -1,6 +1,7 @@
 import AuthorService from "../services/AuthorService";
 import utils from '../utils/Utils'
 import Validator from "../utils/Validator";
+import ArticleService from "../services/ArticleService";
 
 class AuthorController {
 
@@ -17,8 +18,7 @@ class AuthorController {
       utils.setSuccess(200, "Author created!", createdAuthor);
       return utils.send(res);
     } catch (error) {
-      utils.setError(500, error.message);
-      return utils.send(res);
+      return utils.internalServerError(error.message, res);
     }
   }
 
@@ -72,8 +72,7 @@ class AuthorController {
 
       return utils.send(res);
     } catch (error) {
-      utils.setError(500, error.message);
-      return utils.send(res);
+      return utils.internalServerError(error.message, res);
     }
   }
 
@@ -95,8 +94,29 @@ class AuthorController {
 
       return utils.send(res);
     } catch (error) {
-      utils.setError(500, error.message);
+      return utils.internalServerError(error.message, res);
+    }
+  }
+
+  static async getAllArticles(req, res) {
+    const {id} = req.params;
+    if (!Number(id)) {
+      utils.setError(400, `Author ID must be a number. Got: ${id}`);
       return utils.send(res);
+    }
+
+    const author = await AuthorService.getAuthor(id);
+    if (author == null) {
+      utils.setError(404, `Author not found: id = ${id}`);
+      return utils.send(res);
+    }
+
+    try {
+      const articles = await ArticleService.getArticlesByAuthorId(id);
+      utils.setSuccess(200, "Success", articles);
+      return utils.send(res);
+    } catch (error) {
+      return utils.internalServerError(error.message, res);
     }
   }
 }

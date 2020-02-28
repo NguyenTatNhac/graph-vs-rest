@@ -8,5 +8,6 @@ articleRouter.get('/', ArticleController.getAllArticles);
 articleRouter.get('/:id', ArticleController.getArticle);
 articleRouter.put('/:id', ArticleController.updateArticle);
 articleRouter.delete('/:id', ArticleController.deleteArticle);
+articleRouter.get('/:id/comments', ArticleController.getAllComments);
 
 export default articleRouter;

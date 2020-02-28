@@ -36,6 +36,11 @@ class Utils {
       message: this.message,
     });
   }
+
+  static internalServerError(message, res) {
+    this.setError(500, message);
+    this.send(res);
+  }
 }
 
 export default Utils;

@@ -43,6 +43,14 @@ class ArticleService {
     }
     return null;
   }
+
+  static async getArticlesByAuthorId(authorId) {
+    return database.Article.findAll({
+      where: {
+        authorId: authorId
+      }
+    });
+  }
 }
 
 export default ArticleService;

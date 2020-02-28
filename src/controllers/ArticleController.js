@@ -2,6 +2,7 @@ import Validator from "../utils/Validator";
 import utils from "../utils/Utils";
 import ArticleService from "../services/ArticleService";
 import AuthorService from "../services/AuthorService";
+import CommentService from "../services/CommentService";
 
 class ArticleController {
 
@@ -9,12 +10,6 @@ class ArticleController {
     const requiredParams = Validator.verifyArticleRequiredParams(req.body);
     if (requiredParams) {
       utils.setError(400, requiredParams);
-      return utils.send(res);
-    }
-
-    const {authorId} = req.body;
-    if (!Number(authorId)) {
-      utils.setError(400, "'authorId' must be a number");
       return utils.send(res);
     }
 
@@ -34,8 +29,7 @@ class ArticleController {
       utils.setSuccess(200, "Article created!", createdArticle);
       return utils.send(res);
     } catch (error) {
-      utils.setError(500, error.message);
-      return utils.send(res);
+      return utils.internalServerError(error.message, res);
     }
   }
 
@@ -93,8 +87,7 @@ class ArticleController {
 
       return utils.send(res);
     } catch (error) {
-      utils.setError(500, error.message);
-      return utils.send(res);
+      return utils.internalServerError(error.message, res);
     }
   }
 
@@ -116,8 +109,29 @@ class ArticleController {
 
       return utils.send(res);
     } catch (error) {
-      utils.setError(500, error.message);
+      return utils.internalServerError(error.message, res);
+    }
+  }
+
+  static async getAllComments(req, res) {
+    const {id} = req.params;
+    if (!Number(id)) {
+      utils.setError(400, `Article ID must be a number. Got: ${id}`);
       return utils.send(res);
+    }
+
+    const article = await ArticleService.getArticle(id);
+    if (article == null) {
+      utils.setError(404, `Article not found: id = ${id}`);
+      return utils.send(res);
+    }
+
+    try {
+      const comments = await CommentService.getCommentByArticleId(id);
+      utils.setSuccess(200, "Success", comments);
+      return utils.send(res);
+    } catch (error) {
+      return utils.internalServerError(error.message, res);
     }
   }
 }
