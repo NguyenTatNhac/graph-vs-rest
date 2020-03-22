@@ -3,8 +3,13 @@
   "version": "0.0.1",
   "description": "This is my personal blog",
   "scripts": {
-    "dev": "echo \"Error: no test specified\" && exit 1"
+    "dev": "concurrently \"npm run server-dev\" \"npm run client-dev\"",
+    "server-dev": "cd server && npm run dev",
+    "client-dev": "cd client && npm start"
   },
   "author": "Ryker Tyler",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^5.1.0"
+  }
 }
