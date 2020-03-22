@@ -76,7 +76,7 @@ class AuthorController {
     }
   }
 
-  static async deleteAuthor(req, res) {
+  static async deleteAuthor(req, res) { 
     const {id} = req.params;
     if (!Number(id)) {
       utils.setError(400, `Author ID must be a number. Got: ${id}`);
