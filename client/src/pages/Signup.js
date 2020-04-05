@@ -1,13 +1,12 @@
-import React from "react";
 import Header from "../components/Header";
+import React from "react";
 import Footer from "../components/Footer";
 
-export default function Login() {
-
+export default function Signup() {
   return (
       <React.Fragment>
         <Header/>
-        <h1>Welcome to Login page!</h1>
+        <h1>Welcome to Sign Up page!</h1>
         <Footer/>
       </React.Fragment>
   )

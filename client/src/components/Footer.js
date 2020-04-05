@@ -26,9 +26,10 @@ function Copyright() {
   );
 }
 
-export default function Footer(props) {
+export default function Footer() {
   const classes = useStyles();
-  const {description, title} = props;
+  const title = "Ryker Tyler Personal Blog";
+  const description = "If you do it, you will eat it. If you don't, you will eat dickhead, eat shit. That's for all!";
 
   return (
       <footer className={classes.footer}>

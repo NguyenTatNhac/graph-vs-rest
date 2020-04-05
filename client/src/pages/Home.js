@@ -22,16 +22,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const sections = [
-  {title: 'Technology', url: '#'},
-  {title: 'Culture', url: '#'},
-  {title: 'Politics', url: '#'},
-  {title: 'Opinion', url: '#'},
-  {title: 'Science', url: '#'},
-  {title: 'Health', url: '#'},
-  {title: 'Travel', url: '#'},
-];
-
 const mainFeaturedPost = {
   title: 'Title of a longer featured blog post',
   description:
@@ -93,7 +83,7 @@ export default function Home() {
       <React.Fragment>
         <CssBaseline/>
         <Container maxWidth="lg">
-          <Header title="Ryker Tyler's Blog" sections={sections}/>
+          <Header/>
           <main>
             <MainFeaturedPost post={mainFeaturedPost}/>
             <Grid container spacing={4}>
@@ -112,8 +102,7 @@ export default function Home() {
             </Grid>
           </main>
         </Container>
-        <Footer title="Footer"
-                description="Something here to give the footer a purpose!"/>
+        <Footer/>
       </React.Fragment>
   );
 }
