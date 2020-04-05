@@ -82,7 +82,7 @@ export default function Home() {
   return (
       <React.Fragment>
         <CssBaseline/>
-        <Container maxWidth="lg">
+        <Container>
           <Header/>
           <main>
             <MainFeaturedPost post={mainFeaturedPost}/>
