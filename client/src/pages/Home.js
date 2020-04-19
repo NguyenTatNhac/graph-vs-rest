@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom';
 export default () => {
   return (
     <div>
-      Hello World...
-      <Link to="/err">Error</Link>
+      <h1>Hello World. Welcome to my home page!</h1>
+      <h2>
+        <Link to="/err">Error</Link>
+      </h2>
     </div>
   );
 };
