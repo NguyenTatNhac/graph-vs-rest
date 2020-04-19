@@ -5,7 +5,12 @@
   },
   "extends": [
     "plugin:react/recommended",
-    "airbnb"
+    "airbnb",
+    // Thanks to eslint-config-prettier
+    "plugin:prettier/recommended",
+    "prettier/flowtype",
+    "prettier/react",
+    "prettier/standard"
   ],
   "globals": {
     "Atomics": "readonly",
@@ -19,8 +24,21 @@
     "sourceType": "module"
   },
   "plugins": [
-    "react"
+    "react",
+    // Thanks to eslint-plugin-prettier
+    "prettier"
   ],
   "rules": {
+    // Replace AirBnb rules for react code
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ],
+    "prettier/prettier": "error"
   }
 }
