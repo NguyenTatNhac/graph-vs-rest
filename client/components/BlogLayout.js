@@ -10,10 +10,17 @@ const BlogLayout = ({ children }) => {
     <Layout>
       <BlogMeta />
       <BlogHeader />
-      <Content className="site-layout" style={{ paddingTop: 64 }}>
-        <div className="site-layout-background">{children}</div>
+      <Content style={{ padding: '64px 50px 0' }}>
+        <div className="siteLayout">{children}</div>
       </Content>
       <BlogFooter />
+      <style jsx>{`
+        .siteLayout {
+          background: #fff;
+          padding: 24px;
+          min-height: 280px;
+        }
+      `}</style>
     </Layout>
   );
 };
