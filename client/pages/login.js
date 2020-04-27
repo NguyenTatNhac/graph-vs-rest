@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import Head from 'next/head';
-import Layout from '../components/Layout';
+import BlogLayout from '../components/BlogLayout';
 
-export default () => {
+const LoginPage = () => {
   return (
-    <Layout>
+    <BlogLayout>
       <Head>
         <title>Login to Ryker&apos;s blog</title>
       </Head>
@@ -14,6 +14,8 @@ export default () => {
           <a>Go To Home</a>
         </Link>
       </h2>
-    </Layout>
+    </BlogLayout>
   );
 };
+
+export default LoginPage;

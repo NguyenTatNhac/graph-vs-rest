@@ -1,14 +1,16 @@
 import Error from 'next/error';
-import Head from 'next/head';
-import Layout from '../components/Layout';
+import Link from 'next/link';
+import BlogLayout from '../components/BlogLayout';
 
-export default () => {
+const NotFoundPage = () => {
   return (
-    <Layout>
-      <Head>
-        <title>Oops, something went wrong!</title>
-      </Head>
-      <Error statusCode={404} />
-    </Layout>
+    <BlogLayout>
+      <Error statusCode={404} title="Oops, something went wrong!" />
+      <Link href="/">
+        <a>Home</a>
+      </Link>
+    </BlogLayout>
   );
 };
+
+export default NotFoundPage;

@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-const Meta = () => {
+const BlogMeta = () => {
   return (
     <Head>
       <meta name="description" content="Ryker's blog." />
@@ -8,4 +8,4 @@ const Meta = () => {
   );
 };
 
-export default Meta;
+export default BlogMeta;

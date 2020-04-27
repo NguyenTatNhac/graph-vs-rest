@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Head from 'next/head';
-import Layout from '../../components/Layout';
+import BlogLayout from '../../components/BlogLayout';
 
 const Post = (props) => {
   const router = useRouter();
@@ -9,7 +9,7 @@ const Post = (props) => {
   const tui = { props };
 
   return (
-    <Layout>
+    <BlogLayout>
       <Head>
         <title>View a post</title>
       </Head>
@@ -20,12 +20,7 @@ const Post = (props) => {
           <a>Home</a>
         </Link>
       </h2>
-      <style jsx>{`
-        h2 {
-          font-size: 3rem;
-        }
-      `}</style>
-    </Layout>
+    </BlogLayout>
   );
 };
 
